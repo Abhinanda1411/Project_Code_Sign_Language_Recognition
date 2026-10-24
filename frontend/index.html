@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign Language Recognition</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Sign Language to Text and Speech</h1>
+  <div class="headright">
+    <a class="navlink" href="guide.html" target="_blank">Sign guide</a>
+    <button id="btn-camera" class="camera-btn">Turn camera off</button>
+    <span id="status" class="chip">Starting…</span>
+  </div>
+</header>
+
+<main>
+  <section class="camera">
+    <img id="video" src="/video" alt="Live camera">
+    <p class="hint">Hold a letter still for about half a second. Show <b>REST</b> (relaxed hand) between two identical letters. Draw J and Z in the air. <b>Both open palms</b> held up clear the text. A <b>thumbs up</b> speaks the text.</p>
+  </section>
+
+  <section class="panel">
+    <div class="detect">
+      <div>
+        <div class="label">Seeing</div>
+        <div id="letter" class="letter">–</div>
+      </div>
+      <div class="hold">
+        <div class="label">Hold</div>
+        <div class="bar"><div id="holdbar"></div></div>
+        <div id="dynamic" class="dyn"></div>
+      </div>
+    </div>
+
+    <div class="label">Text</div>
+    <div id="text" class="text" aria-live="polite"></div>
+    <div class="clearrow">
+      <span id="clearmsg" class="label">Clear: both open palms</span>
+      <div class="bar small"><div id="clearbar"></div></div>
+      <span id="palms" class="label">Open palms: 0/2</span>
+    </div>
+    <div class="clearrow">
+      <span id="speakmsg" class="label">Speak: thumbs up</span>
+      <div class="bar small"><div id="speakbar"></div></div>
+      <span id="thumb" class="label">Thumbs up: no</span>
+    </div>
+
+    <div id="suggestions" class="suggest"></div>
+
+    <div class="buttons">
+      <button id="btn-space">Space</button>
+      <button id="btn-back">Backspace</button>
+      <button id="btn-clear">Clear</button>
+      <button id="btn-speak" class="primary">Speak</button>
+    </div>
+
+    <div class="speech">
+      <label>Voice <select id="voice"></select></label>
+      <label>Speed <input id="rate" type="range" min="0.6" max="1.4" step="0.1" value="1"></label>
+      <label class="check"><input id="autospeak" type="checkbox"> Speak each word when I press Space</label>
+    </div>
+    <p id="speech-note" class="note"></p>
+    <p class="note">Click anywhere on this page once, so your browser allows speech.</p>
+  </section>
+</main>
+
+<script src="speech.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
